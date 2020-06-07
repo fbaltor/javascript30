@@ -114,13 +114,18 @@
       const lastNameSorted = inventors.sort((a, b) =>
         a.last > b.last ? 1 : -1
       );
-      console.table(lastNameSorted);
+      //console.table(lastNameSorted);
 
       // 7b. sort Exercise
       // Sort the people alphabetically by last name
+      const alpha = people.sort((a, b) => {
+        const [aLast, aFirst] = a.split(", ");
+        const [bLast, bFirst] = b.split(", ");
 
-      // 8. Reduce Exercise
-      // Sum up the instances of each of these
+        return aLast > bLast ? 1 : -1;
+      });
+      //console.log(alpha);
+
       const data = [
         "car",
         "car",
@@ -137,6 +142,20 @@
         "car",
         "truck",
       ];
+
+      // 8. Reduce Exercise
+      // Sum up the instances of each of these
+
+      const transportation = data.reduce((obj, item) => {
+        if (!obj[item]) {
+          obj[item] = 0;
+        }
+        obj[item]++;
+
+        return obj;
+      }, {});
+
+      console.log(transportation);
     </script>
   </body>
 </html>
